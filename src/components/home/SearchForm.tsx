@@ -24,9 +24,7 @@ const SearchForm: React.FC = () => {
   return (
     <div className="jumbotron jumbotron-fluid mt-5 text-center">
       <div className="container">
-        <h1 className="display-4 mb-3">
-          <i className="fas fa-search" /> Search for a Movie or Series..
-        </h1>
+        <h1 className="display-4 mb-3">Search for a Movie or Series..</h1>
         <form id="searchForm" onSubmit={(e) => handleSubmit(e)}>
           <input
             type="text"
