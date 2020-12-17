@@ -3,33 +3,35 @@ import {
   FETCH_MOVIE,
   FETCH_MOVIES,
   LOADING,
-} from "../action/type";
+  InitialState,
+  Action,
+} from "../types";
 
-const initialState = {
+const initialState: InitialState = {
   text: "",
-  movies: [],
+  movie: null,
   loading: false,
-  movie: [],
+  movies: null,
 };
 
-export default (state = initialState, { type, payload }) => {
-  switch (type) {
+export default (state = initialState, action: Action) => {
+  switch (action.type) {
     case SEARCH_MOVIE:
       return {
         ...state,
-        text: payload,
+        text: action.payload,
         loading: false,
       };
     case FETCH_MOVIES:
       return {
         ...state,
-        movies: payload,
+        movies: action.payload,
         loading: false,
       };
     case FETCH_MOVIE:
       return {
         ...state,
-        movie: payload,
+        movie: action.payload,
         loading: false,
       };
     case LOADING:

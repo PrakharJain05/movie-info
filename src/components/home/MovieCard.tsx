@@ -1,10 +1,22 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { Searched } from "../../store/types";
 
-const MovieCard = ({ movie }) => {
+type Props = {
+  movie: Searched;
+};
+
+const MovieCard: React.FC<Props> = ({ movie }) => {
   return (
     <div className="col-md-3 mb-5 movieCard">
-      <div className="card card-body bg-dark text-center h-100">
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          flexDirection: "column",
+        }}
+        className="card card-body bg-dark text-center h-100"
+      >
         <img className="w-100 mb-2" src={movie.Poster} alt={movie.Title} />
         <h5 className="text-light card-title">
           {movie.Title} - {movie.Year}

@@ -1,16 +1,20 @@
-import { SEARCH_MOVIE, FETCH_MOVIE, FETCH_MOVIES, LOADING } from "./type";
+import { SEARCH_MOVIE, FETCH_MOVIE, FETCH_MOVIES, LOADING } from "../types";
 import axios from "axios";
 
 const APIKey = process.env.REACT_APP_APIKEY;
 
-export const searchMovie = (text) => (dispatch) => {
+export const searchMovie = (text: string) => (
+  dispatch: (arg0: { type: string; payload: string }) => void
+) => {
   dispatch({
     type: SEARCH_MOVIE,
     payload: text,
   });
 };
 
-export const fetchMovies = (text) => (dispatch) => {
+export const fetchMovies = (text: string) => (
+  dispatch: (arg0: { type: string; payload: object }) => any
+) => {
   axios
     .get(`https://www.omdbapi.com/?apikey=${APIKey}&s=${text}`)
     .then((response) =>
@@ -22,7 +26,9 @@ export const fetchMovies = (text) => (dispatch) => {
     .catch((err) => console.log(err));
 };
 
-export const fetchMovie = (id) => (dispatch) => {
+export const fetchMovie = (id: string) => (
+  dispatch: (arg0: { type: string; payload: object }) => any
+) => {
   axios
     .get(`https://www.omdbapi.com/?apikey=${APIKey}&i=${id}`)
     .then((response) =>
@@ -34,8 +40,10 @@ export const fetchMovie = (id) => (dispatch) => {
     .catch((err) => console.log(err));
 };
 
-export const setloading = () => {
-  return {
+export const setLoading = () => (
+  dispatch: (arg0: { type: string }) => void
+) => {
+  dispatch({
     type: LOADING,
-  };
+  });
 };
