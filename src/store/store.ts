@@ -5,7 +5,9 @@ import rootReducer from "./reducers";
 
 const middleware = [thunk];
 
-export const store = createStore(
-  rootReducer,
-  composeWithDevTools(applyMiddleware(...middleware))
-);
+const devTools =
+  process.env.NODE_ENV === "production"
+    ? applyMiddleware(...middleware)
+    : composeWithDevTools(applyMiddleware(...middleware));
+
+export const store = createStore(rootReducer, devTools);
